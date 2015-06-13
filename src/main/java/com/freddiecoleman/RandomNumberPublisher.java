@@ -16,7 +16,7 @@ public class RandomNumberPublisher extends Publisher {
 	@Override
 	protected void initialLoad() throws APIException {
 		addTopic("numbers");
-		Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new RandomGenerator(this), 1L, 10L, TimeUnit.SECONDS);
+		Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(new RandomNumberGenerator(this), 1L, 10L, TimeUnit.SECONDS);
 	}
     
     @Override
