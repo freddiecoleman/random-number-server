@@ -26,14 +26,14 @@ public class RandomNumberGenerator implements Runnable {
 	}
 
 	private void updateNumber() {
-		Topic numbersTopic = publisher.getTopic("numbers");
+		Topic numbersTopic = publisher.getTopic(RandomNumberPublisher.NUMBERS_TOPIC);
 
 		if (numbersTopic == null) {
 			try {
 				SingleValueTopicData newRandomNumberData = TopicDataFactory
 						.newSingleValueData(MDataType.INTEGER_STRING);
 				newRandomNumberData.initialise(randomGenerator.nextInt(1000));
-				numbersTopic = publisher.addTopic("numbers",
+				numbersTopic = publisher.addTopic(RandomNumberPublisher.NUMBERS_TOPIC,
 						newRandomNumberData);
 			} catch (APIException ex) {
 				Logs.warning("Failed to create a new numbers topic", ex);

@@ -13,10 +13,12 @@ import com.pushtechnology.diffusion.api.publisher.Publisher;
  *
  */
 public class RandomNumberPublisher extends Publisher {
+	
+	public static final String NUMBERS_TOPIC = "numbers";
 
 	@Override
 	protected void initialLoad() throws APIException {
-		addTopic("numbers");
+		addTopic(NUMBERS_TOPIC);
 		Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(
 				new RandomNumberGenerator(this), 1L, 10L, TimeUnit.SECONDS);
 	}
